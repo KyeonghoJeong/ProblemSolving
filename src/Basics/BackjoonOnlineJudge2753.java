@@ -6,34 +6,20 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-public class BaekjoonOnlineJudge9498 {
+public class BackjoonOnlineJudge2753 {
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-
-		int score = Integer.parseInt(br.readLine());
-		char result = ' ';
 		
-		switch(score/10) {
-			case 10: case 9:
-				result = 'A';
-				break;
-			case 8:
-				result = 'B';
-				break;
-			case 7:
-				result = 'C';
-				break;
-			case 6:
-				result = 'D';
-				break;
-			default:
-				result = 'F';
-				break;
+		int year = Integer.parseInt(br.readLine());
+		String result = "0";
+		
+		if(year%4 == 0) {
+			if(year%100 != 0 || year%400 == 0) result = "1";			
 		}
 		
-		bw.write(Character.toString(result));
+		bw.write(result);
 		
 		bw.flush();
 		bw.close();

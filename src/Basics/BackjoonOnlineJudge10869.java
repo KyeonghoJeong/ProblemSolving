@@ -5,21 +5,24 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.StringTokenizer;
 
-public class BaekjoonOnlineJudge2753 {
+public class BackjoonOnlineJudge10869 {
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		
-		int year = Integer.parseInt(br.readLine());
-		String result = "0";
+		StringTokenizer st = new StringTokenizer(br.readLine());
 		
-		if(year%4 == 0) {
-			if(year%100 != 0 || year%400 == 0) result = "1";			
-		}
+		int a = Integer.parseInt(st.nextToken());
+		int b = Integer.parseInt(st.nextToken());
 		
-		bw.write(result);
+		bw.write(Integer.toString(a+b)+"\n");
+		bw.write(Integer.toString(a-b)+"\n");
+		bw.write(Integer.toString(a*b)+"\n");
+		bw.write(Integer.toString(a/b)+"\n");
+		bw.write(Integer.toString(a%b));
 		
 		bw.flush();
 		bw.close();
