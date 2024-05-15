@@ -72,6 +72,7 @@ class CustomArrayList<E> {
 		Object[] newArr = new Object[newCapacity];
 		
 		System.arraycopy(arr, 0, newArr, 0, arr.length);
+		
 		arr = newArr;
 	}
 	
@@ -87,16 +88,16 @@ class CustomArrayList<E> {
 		for(int i=size; i>idx; i--) arr[i] = arr[i-1];
 		
 		arr[idx] = e;
-			
+		
 		size++;
 	}
 	
 	public void remove(int idx) {
 		if(idx < 0 || idx >= size) throw new IndexOutOfBoundsException("Index: "+idx+", Size: "+size);
 		
-		size--;
+		for(int i=idx; i<size-1; i++) arr[i] = arr[i+1];
 		
-		for(int i=idx; i<size; i++) arr[i] = arr[i+1];
+		size--;
 	}
 	
 	public void set(int idx, E e) {
@@ -129,7 +130,7 @@ class CustomArrayList<E> {
 	public void print() {
 		for(int i=0; i<size; i++) {
 			System.out.print(arr[i]);
-			
+		
 			if(i != size-1) System.out.print(" ");
 		}
 		

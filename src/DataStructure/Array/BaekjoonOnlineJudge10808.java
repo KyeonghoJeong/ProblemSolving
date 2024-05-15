@@ -16,7 +16,7 @@ public class BaekjoonOnlineJudge10808 {
 		
 		int[] arr = new int[26];
 		
-		for(int i=0; i<s.length(); i++) arr[(int) s.charAt(i) - 97]++;
+		for(int i=0; i<s.length(); i++) arr[s.charAt(i) - 97]++;
 		
 		for(int i=0; i<26; i++) {
 			bw.write(Integer.toString(arr[i]));
