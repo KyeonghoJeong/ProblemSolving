@@ -1,4 +1,4 @@
-package DataStructure.Queue;
+package DataStructure.Stack;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
-public class BackjoonOnlineJudge10845 {
+public class BaekjoonOnlineJudge10828 {
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -15,49 +15,41 @@ public class BackjoonOnlineJudge10845 {
 		
 		int n = Integer.parseInt(br.readLine());
 		
-		CustomQueue<Integer> customQueue = new CustomQueue<>();
+		CustomStack<Integer> customStack = new CustomStack<>();
 		
 		while(n-- > 0) {
 			StringTokenizer st = new StringTokenizer(br.readLine());
 			
 			switch(st.nextToken()) {
 			case "push":
-				customQueue.add(Integer.parseInt(st.nextToken()));
+				customStack.add(Integer.parseInt(st.nextToken()));
 				
 				break;
 			case "pop":
-				if(customQueue.isEmpty()) {
+				if(customStack.isEmpty()) {
 					bw.write("-1\n");
 				}else {
-					bw.write(Integer.toString(customQueue.poll())+"\n");
+					bw.write(Integer.toString(customStack.pop())+"\n");
 				}
 				
 				break;			
 			case "size":
-				bw.write(Integer.toString(customQueue.size())+"\n");
+				bw.write(Integer.toString(customStack.size())+"\n");
 				
 				break;			
 			case "empty":
-				if(customQueue.isEmpty()) {
+				if(customStack.isEmpty()) {
 					bw.write("1\n");
 				}else {
 					bw.write("0\n");
 				}
 				
 				break;			
-			case "front":
-				if(customQueue.isEmpty()) {
+			case "top":
+				if(customStack.isEmpty()) {
 					bw.write("-1\n");
 				}else {
-					bw.write(Integer.toString(customQueue.peek())+"\n");
-				}
-				
-				break;		
-			case "back":
-				if(customQueue.isEmpty()) {
-					bw.write("-1\n");
-				}else {
-					bw.write(Integer.toString(customQueue.back())+"\n");
+					bw.write(String.valueOf(customStack.peek())+"\n");
 				}
 				
 				break;		
@@ -71,3 +63,4 @@ public class BackjoonOnlineJudge10845 {
 	}
 	
 }
+
