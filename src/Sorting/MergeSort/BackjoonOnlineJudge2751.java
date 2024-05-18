@@ -20,7 +20,9 @@ public class BackjoonOnlineJudge2751 {
 		arr = new int[n];
 		tmp = new int[n];
 		
-		for(int i=0; i<n; i++) arr[i] = Integer.parseInt(br.readLine());
+		for(int i=0; i<n; i++) {
+			arr[i] = Integer.parseInt(br.readLine());
+		}
 		
 		mergeSort(0, n);
 		
@@ -48,19 +50,17 @@ public class BackjoonOnlineJudge2751 {
 	public static void merge(int start, int end) {
 		int mid = (start + end) / 2;
 		
-		int a = start;
-		int b = mid;
-
-		for(int i=start; i<end; i++) {
-			if(a == mid) tmp[i] = arr[b++];
-			else if(b == end) tmp[i] = arr[a++];
-			else if(arr[a] >= arr[b]) tmp[i] = arr[b++]; 
-			else if(arr[a] <= arr[b]) tmp[i] = arr[a++]; 
-		}
+		int idx1 = start;
+		int idx2 = mid;
 		
 		for(int i=start; i<end; i++) {
-			arr[i] = tmp[i];
+			if(idx1 == mid) tmp[i] = arr[idx2++];
+			else if(idx2 == end) tmp[i] = arr[idx1++];
+			else if(arr[idx1] >= arr[idx2]) tmp[i] = arr[idx2++];
+			else if(arr[idx1] <= arr[idx2]) tmp[i] = arr[idx1++];
 		}
+		
+		for(int i=start; i<end; i++) arr[i] = tmp[i];
 	}
 	
 }

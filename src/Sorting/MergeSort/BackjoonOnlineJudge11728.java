@@ -9,6 +9,10 @@ import java.util.StringTokenizer;
 
 public class BackjoonOnlineJudge11728 {
 	
+	private static int[] a;
+	private static int[] b;
+	private static int[] result;
+	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -18,21 +22,28 @@ public class BackjoonOnlineJudge11728 {
 		int n = Integer.parseInt(st.nextToken());
 		int m = Integer.parseInt(st.nextToken());
 		
-		int[] a = new int[n];
-		int[] b = new int[m];
+		a = new int[n];
+		b = new int[m];
+		result = new int[n+m];
 		
 		st = new StringTokenizer(br.readLine());
-		for(int i=0; i<n; i++) a[i] = Integer.parseInt(st.nextToken());
 		
+		for(int i=0; i<n; i++) {
+			a[i] = Integer.parseInt(st.nextToken());
+		}
+
 		st = new StringTokenizer(br.readLine());
-		for(int i=0; i<m; i++) b[i] = Integer.parseInt(st.nextToken());
 		
-		int[] c = merge(a, b);
+		for(int i=0; i<m; i++) {
+			b[i] = Integer.parseInt(st.nextToken());
+		}
 		
-		for(int i=0; i<c.length; i++) {
-			bw.write(Integer.toString(c[i]));
+		mergeSort();
+		
+		for(int i=0; i<n+m; i++) {
+			bw.write(Integer.toString(result[i]));
 			
-			if(i != c.length-1) bw.write(" ");
+			if(i != n+m-1) bw.write(" ");
 		}
 		
 		bw.flush();
@@ -40,20 +51,16 @@ public class BackjoonOnlineJudge11728 {
 		br.close();
 	}
 	
-	public static int[] merge(int[] a, int[] b) {
-		int[] c = new int[a.length + b.length];
-		
+	public static void mergeSort() {
 		int idx1 = 0;
 		int idx2 = 0;
 		
-		for(int i=0; i<c.length; i++) {
-			if(idx1 == a.length) c[i] = b[idx2++];
-			else if(idx2 == b.length) c[i] = a[idx1++];
-			else if(a[idx1] >= b[idx2]) c[i] = b[idx2++];
-			else if(a[idx1] <= b[idx2]) c[i] = a[idx1++];
+		for(int i=0; i<result.length; i++) {
+			if(idx1 == a.length) result[i] = b[idx2++];
+			else if(idx2 == b.length) result[i] = a[idx1++];
+			else if(a[idx1] <= b[idx2]) result[i] = a[idx1++];
+			else if(a[idx1] >= b[idx2]) result[i] = b[idx2++];
 		}
-		
-		return c;
 	}
 
 }

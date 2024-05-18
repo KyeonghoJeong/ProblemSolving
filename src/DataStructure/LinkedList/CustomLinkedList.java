@@ -21,12 +21,12 @@ public class CustomLinkedList<E> {
 	private int size;
 	
 	public CustomLinkedList() {
-		this.head = new Node<E>();
-		this.tail = new Node<E>();
+		this.head = new Node<>();
+		this.tail = new Node<>();
 		this.size = 0;
 	}
 	
-	public Node<E> searchNode(int idx) {
+	public Node<E> searchNode(int idx){
 		Node<E> node = head;
 		
 		for(int i=0; i<=idx; i++) {
@@ -43,7 +43,7 @@ public class CustomLinkedList<E> {
 	public void add(int idx, E e) {
 		if(idx < 0 || idx > size) throw new IndexOutOfBoundsException("Index: "+idx+", Size: "+size);
 		
-		Node<E> newNode = new Node<E>();
+		Node<E> newNode = new Node<>();
 		newNode.e = e;
 		
 		if(size == 0) {
@@ -66,28 +66,20 @@ public class CustomLinkedList<E> {
 	}
 	
 	public void remove(int idx) {
-		if(idx < 0 || idx >= size) throw new IndexOutOfBoundsException("Index: "+idx+", Size: "+size);
+		if(idx < 0 || idx >= size) throw new IndexOutOfBoundsException("Index: "+idx+", Size"+size);
 		
 		Node<E> node = searchNode(idx);
 		
 		node.prev.next = node.next;
 		node.next.prev = node.prev;
 		
-//		if(idx == size-1) {
-//			node.prev.next = tail;
-//			tail.prev = node.prev;
-//		}else {
-//			node.prev.next = node.next;
-//			node.next.prev = node.prev;
-//		}
-
 		node = null;
 		
 		size--;
 	}
 	
 	public void set(int idx, E e) {
-		if(idx < 0 || idx >= size) throw new IndexOutOfBoundsException("Index: "+idx+", Size: "+size);
+		if(idx < 0 || idx >= size) throw new IndexOutOfBoundsException("Index: "+idx+", Size"+size);
 		
 		Node<E> node = searchNode(idx);
 		
@@ -95,9 +87,34 @@ public class CustomLinkedList<E> {
 	}
 	
 	public E get(int idx) {
+		if(idx < 0 || idx >= size) throw new IndexOutOfBoundsException("Index: "+idx+", Size"+size);
+		
 		Node<E> node = searchNode(idx);
 		
-		return (E) node.e;
+		return node.e;
+	}
+	
+	public void initialize(E e) {
+		Node<E> node = head;
+		
+		for(int i=0; i<size; i++) {
+			node = node.next;
+			node.e = e;
+		}
+	}
+	
+	public void print() {
+		Node<E> node = head;
+		
+		while(node.next.e != null) {
+			node = node.next;
+
+			System.out.print(node.e);
+			
+			if(node.next.e != null) System.out.print(" ");
+		}
+		
+		System.out.println();
 	}
 	
 	public int size() {
@@ -108,40 +125,6 @@ public class CustomLinkedList<E> {
 		if(size() == 0) return true;
 		
 		return false;
-	}
-	
-	public void initialize(E e) {
-		Node<E> node = head;
-		
-		for(int i=0; i<size; i++) {
-			node = node.next;
-			
-			node.e = e;
-		}
-	}
-	
-	public void print() {
-		Node<E> node = head;
-		
-		while(node.next.e != null) {
-			node = node.next;
-			
-			System.out.print(node.e);
-			
-			if(node.next.e != null) System.out.print(" ");
-		}
-		
-//		for(int i=0; i<size; i++) {
-//			node = node.next;
-//			
-//			System.out.print(node.e);
-//			
-//			if(i != size-1) {
-//				System.out.print(" ");
-//			}
-//		}
-		
-		System.out.println();
 	}
 	
 }

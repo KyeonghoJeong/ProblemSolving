@@ -17,8 +17,10 @@ public class BackjoonOnlineJudge2751 {
 		int n = Integer.parseInt(br.readLine());
 		
 		arr = new int[n];
-
-		for(int i=0; i<n; i++) arr[i] = Integer.parseInt(br.readLine());
+		
+		for(int i=0; i<n; i++) {
+			arr[i] = Integer.parseInt(br.readLine());
+		}
 		
 		quickSort(0, n);
 		
@@ -42,7 +44,7 @@ public class BackjoonOnlineJudge2751 {
 		
 		while(true) {
 			while(left <= right && arr[left] <= pivot) left++;
-			while(left <= right && arr[right] >= pivot) right--;
+			while(left <= right && arr[left] >= pivot) right--;
 			
 			if(left > right) break;
 			
@@ -55,10 +57,10 @@ public class BackjoonOnlineJudge2751 {
 		quickSort(right+1, end);
 	}
 	
-	public static void swap(int a, int b) {
-		int tmp = arr[a];
-		arr[a] = arr[b];
-		arr[b] = tmp;
+	public static void swap(int idx1, int idx2) {
+		int tmp = arr[idx1];
+		arr[idx1] = arr[idx2];
+		arr[idx2] = tmp;
 	}
 	
 }

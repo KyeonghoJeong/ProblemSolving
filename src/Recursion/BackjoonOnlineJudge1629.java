@@ -18,7 +18,7 @@ public class BackjoonOnlineJudge1629 {
 		long a = Integer.parseInt(st.nextToken());
 		long b = Integer.parseInt(st.nextToken());
 		long c = Integer.parseInt(st.nextToken());
-		
+
 		long result = func(a, b, c);
 		
 		bw.write(Long.toString(result));
@@ -36,8 +36,7 @@ public class BackjoonOnlineJudge1629 {
 		if(b%2 == 0) {
 			return (result * result) % c;
 		}else {
-			return (result * ((result * (a % c)) % c)) % c;
-			// return result * result % c * a % c;
+			return (result * ((result * (a % c)) % c)) % c; 
 		}
 	}
 	

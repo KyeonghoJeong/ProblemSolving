@@ -57,6 +57,20 @@ public class CustomArrayList<E> {
 		return (E) arr[idx];
 	}
 	
+	public void initialize(E e) {
+		for(int i=0; i<size; i++) arr[i] = e;
+	}
+	
+	public void print() {
+		for(int i=0; i<size; i++) {
+			System.out.print(arr[i]);
+			
+			if(i != size-1) System.out.print(" ");
+		}
+		
+		System.out.println();
+	}
+	
 	public int size() {
 		return size;
 	}
@@ -65,20 +79,6 @@ public class CustomArrayList<E> {
 		if(size() == 0) return true;
 		
 		return false;
-	}
-	
-	public void initialize(E e) {
-		for(int i=0; i<size; i++) arr[i] = e;
-	}
-	
-	public void print() {
-		for(int i=0; i<size; i++) {
-			System.out.print(arr[i]);
-		
-			if(i != size-1) System.out.print(" ");
-		}
-		
-		System.out.println();
 	}
 	
 }
